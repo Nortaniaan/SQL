@@ -1,0 +1,138 @@
+SELECT 
+    curefoods_test.orders.id AS orderid,
+     CASE 
+        WHEN curefoods_test.orders.brand_name = 'CakeZone' THEN splitByString(' - ', CAST(curefoods_test.orders.store_name AS CHAR), 10)[2] 
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'salad') >= 1 THEN 'Nomad Salad'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'enso') >= 1 THEN 'Enso'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'crunch') >= 1 THEN 'Crunch Pizza'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'eatfit') >= 1 THEN 'Nomad EatFit Lab'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'xo') >= 1 THEN 'XO - Pan Asian Pizza'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'fuel') >= 1 THEN 'XO - Pan Asian Pizza'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'picante') >= 1 THEN 'Go Green'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'soul') >= 1 THEN 'Go Green'
+        WHEN curefoods_test.orders.brand_name = 'Nomad by UrbanPiper' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'nomad') >= 1 THEN 'Nomad Pizza Traveller Series'
+        WHEN curefoods_test.orders.brand_name = 'Nomad' THEN 'Nomad Offline'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'olio') >= 1 THEN 'Olio'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'crusto') >= 1 THEN 'Crustos'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'juno_sw') >= 1 THEN 'JUNO_SW'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'juno') >= 1 THEN 'Junos'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'eatfit') >= 1 THEN 'EF'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'pomp') >= 1 THEN 'Pomp'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'row') >= 1 THEN 'ROW'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'phat') >= 1 THEN 'PHAT'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'onesta') >= 1 THEN 'Onesta'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'mio') >= 1 THEN 'MIO'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), '99slice') >= 1 THEN '99SLICE'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'enso') >= 1 THEN 'Olio ENSO'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'sourdough') >= 1 THEN 'Sourdough'
+        WHEN curefoods_test.orders.brand_name = 'JAIKA-CF' THEN splitByString(' - ', CAST(curefoods_test.orders.store_name AS CHAR), 10)[2]
+        WHEN curefoods_test.orders.brand_name = 'Frozen Bottle' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'frozen bottle') >= 1 THEN 'Frozen Bottle'
+        WHEN curefoods_test.orders.brand_name = 'Frozen Bottle' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)),'madno') >= 1 THEN 'Madno'
+        WHEN curefoods_test.orders.brand_name IN ('Arambam - Start with Millet', 'Arambam - Start with Millet by Urbanpiper ', 'Arambam by Urbanpiper ', 'Millet Express', 'Millet Express by Urbanpiper ', 'Arambam - Start with Millet by UrbanPiper') OR curefoods_test.orders.sub_brand IN ('Arambam Flavours of South', 'Millet Express') OR (curefoods_test.orders.sub_brand = 'Madras Curd Rice Company' and curefoods_test.orders.city IN ('Pune')) THEN 
+            CASE
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)), 'millet') >= 1 AND POSITION(LOWER(CAST(store_name AS CHAR)), 'rapido') >= 1 THEN 'Millet Express Rapido' 
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)), 'rapido') >= 1 THEN 'Arambam Rapido'
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)),'millet') >= 1 THEN 'Millet Express'
+                WHEN sub_brand = 'Millet Express' THEN 'Millet Express'
+                WHEN sub_brand = 'Madras Curd Rice Company' and city IN ('Pune') THEN 'Arambam MCRC'
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)),'mcr') >= 1 THEN 'Arambam MCRC' 
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)),'arambam') >= 1 THEN 'Arambam'
+                WHEN POSITION(LOWER(CAST(store_name AS CHAR)),'pos') >= 1 THEN 'Arambam Offline' 
+                WHEN brand_name ilike '%MOC%' and sub_brand in ('Arambam Flavours of South') then 'Arambam'
+            END
+        WHEN brand_name ILIKE '%MOC%' AND sub_brand IN ('Rolls and Wraps by HRX', 'Rolls & Wraps by Eatfit') THEN 'Rolls and Wraps by HRX'
+        WHEN brand_name ILIKE '%MOC%' AND sub_brand IN ('Rolls on Wheels') THEN 'Rolls On Wheels'
+        WHEN brand_name ILIKE '%MOC%' AND sub_brand IN ('Shawarma On Wheels') THEN 'Shawarma On Wheels'
+        WHEN brand_name ILIKE '%MOC%' AND sub_brand IN ('Roz Shawarma & Rolls') THEN 'Roz Shawarma & Rolls'
+        WHEN brand_name ILIKE '%MOC%' AND sub_brand IN ('Zippy') THEN 'Zippy'
+        WHEN brand_name = 'Rolls On Wheels' THEN 'ROW - Sharief Bhai'
+        WHEN curefoods_test.orders.brand_name = 'New Imperial Bakery & Cafe - Since 1880' THEN 'New Imperial'
+        WHEN brand_name = 'Ovenfresh - New' AND store_name ILIKE '%online%' THEN 'Ovenfresh - Chennai'
+        WHEN curefoods_test.orders.sub_brand = 'Papacream - Ice Creams & Desserts' THEN 'Papacream - Ice Creams & Desserts'
+        ELSE curefoods_test.orders.brand_name
+    END AS brand_name,
+    CASE 
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' THEN splitByString('_', CAST(curefoods_test.orders.store_name AS CHAR), 3)[2]
+        WHEN curefoods_test.orders.brand_name IN ('CakeZone','Nomad by UrbanPiper','JAIKA-CF','Frozen Bottle') THEN splitByString(' - ', CAST(curefoods_test.orders.store_name AS CHAR), 3)[1]
+        ELSE curefoods_test.orders.store_name
+    END AS store_name,
+    CASE 
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' THEN splitByString('_', CAST(curefoods_test.orders.store_name AS CHAR), 3)[1]
+        WHEN LEFT(curefoods_test.orders.store_name, 3) = 'PNQ' THEN 'Pune'
+        WHEN curefoods_test.orders.store_name = 'MYQ_PVP' THEN 'Mysore'
+        WHEN curefoods_test.orders.city IN ('Bengaluru', 'Bangalore', 'Bangalore Urban', 'Bangalore Rural') THEN 'Bangalore'
+        WHEN curefoods_test.orders.city = 'chennai' THEN 'Chennai'
+        WHEN curefoods_test.orders.city = 'Gurugram' THEN 'Gurgaon'
+        WHEN curefoods_test.orders.city = 'Noida' THEN 'Gurgaon'
+        WHEN curefoods_test.orders.city = 'Delhi' THEN 'Gurgaon'
+        WHEN curefoods_test.orders.city = 'Delhi NCR' THEN 'Gurgaon'
+        WHEN curefoods_test.orders.city = 'Ghaziabad' THEN 'Gurgaon'
+        ELSE curefoods_test.orders.city
+    END AS city,
+    CASE 
+        WHEN EXTRACT(hour FROM created_at_ist) >= 5 AND  EXTRACT(hour FROM created_at_ist)  <= 10  THEN 'BREAKFAST'
+        WHEN EXTRACT(hour FROM created_at_ist) > 10 AND EXTRACT(hour FROM created_at_ist) <= 15 THEN 'LUNCH'
+        WHEN EXTRACT(hour FROM created_at_ist)>  15 AND EXTRACT(hour FROM created_at_ist) <= 18  THEN 'SNACKS'
+        WHEN EXTRACT(hour FROM created_at_ist) > 18 AND EXTRACT(hour FROM created_at_ist) <= 22 THEN 'DINNER'
+        ELSE 'LN'
+    END AS slot,
+    CASE 
+        WHEN curefoods_test.orders.brand_name IN ('Arambam - Start with Millet', 'Arambam - Start with Millet by Urbanpiper ', 'Arambam by Urbanpiper ', 'Millet Express', 'Millet Express by Urbanpiper ', 'Arambam - Start with Millet by UrbanPiper') OR curefoods_test.orders.sub_brand IN ('Arambam Flavours of South', 'Millet Express') OR (curefoods_test.orders.sub_brand = 'Madras Curd Rice Company' and curefoods_test.orders.city IN ('Pune')) THEN 'Arambam - Start with Millet by Urbanpiper'
+        WHEN curefoods_test.orders.brand_name = 'JAIKA-CF' OR curefoods_test.orders.sub_brand IN ('Rolls and Wraps by HRX', 'Rolls on Wheels', 'Shawarma On Wheels','Roz Shawarma & Rolls', 'Rolls & Wraps by Eatfit') THEN 'Rolls on Wheels'
+        WHEN curefoods_test.orders.brand_name IN ('Rolls On Wheels', 'Roz Shawarma by Sharief Bhai') THEN 'Roz Shawarma by Sharief Bhai'
+        WHEN curefoods_test.orders.sub_brand = 'Papacream - Ice Creams & Desserts' THEN 'Papacream - Ice Creams & Desserts' 
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND NOT POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), '99slice') >= 1 AND NOT POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'phat') >= 1 THEN 'Olio - The Wood Fired Pizzeria (Prime)'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), '99slice') >= 1 THEN '99SLICE'
+        WHEN curefoods_test.orders.brand_name = 'Olio - The Wood Fired Pizzeria (Prime)' AND POSITION(LOWER(CAST(curefoods_test.orders.store_name AS CHAR)), 'phat') >= 1 THEN 'PHAT'
+        ELSE curefoods_test.orders.brand_name 
+    END AS brand_main,
+    created_at_ist AS orderdate,
+    created_at_ist - INTERVAL 9 HOUR AS orderdate_9, 
+    -- toDateTime(IF(toHour(created_at_ist) < 9, toDate(created_at_ist) - INTERVAL 1 DAY, toDate(created_at_ist))) + toIntervalSecond(toHour(created_at_ist) * 3600 + toMinute(created_at_ist) * 60 + toSecond(created_at_ist)) AS orderdate_9,
+    channel, 
+    CASE WHEN order_type = 'Toing' OR LOWER(coupon_applied) ILIKE '%toing%' THEN 'toing' ELSE channel END AS channel_name, 
+    coupon_applied, 
+    order_type, 
+    sub_total_amount, 
+    final_orderstate, 
+    discount AS UP_discount, 
+    charges, 
+    aggregator_discount, 
+    total_taxes, 
+    discount - aggregator_discount - charges AS net_discount, 
+    discount*1.0/(CAST(sub_total_amount AS FLOAT) - (CAST(discount AS FLOAT)-CAST(aggregator_discount AS FLOAT)) + total_taxes + charges) AS discount_percent, 
+    (CAST(sub_total_amount AS FLOAT) - (CAST(discount AS FLOAT)-CAST(aggregator_discount AS FLOAT)) + total_taxes + charges) AS UP_Revenue,
+    (CAST(sub_total_amount AS FLOAT) - (CAST(discount AS FLOAT)-CAST(aggregator_discount AS FLOAT)) + charges) AS Net_Revenue,
+    (CAST(sub_total_amount AS FLOAT) + total_taxes + charges) AS UP_Revenue_with_disc,
+    (CAST(sub_total_amount AS FLOAT) + charges) AS Net_Revenue_with_disc
+FROM 
+    curefoods_test.orders 
+LEFT JOIN 
+    (SELECT 
+        order_id,
+        to_status as final_orderstate
+    FROM 
+        (SELECT 
+            order_id,
+            from_status,
+            to_status,
+            ROW_NUMBER() OVER(PARTITION BY order_id ORDER BY status_changed_at_ist DESC) AS rank_
+        FROM 
+            curefoods_test.orders_state_transitions
+        WHERE 
+            DATE(status_changed_at_ist) > CURRENT_DATE()- INTERVAL '64 day')
+    WHERE 
+        rank_ = 1) AS order_status_table
+ON 
+    curefoods_test.orders.id = order_status_table.order_id
+WHERE 
+    DATE(created_at_ist) > CURRENT_DATE() - INTERVAL '62 day' 
+    AND NOT (curefoods_test.orders.store_name ilike 'Amanora Mall%')
+    AND NOT (curefoods_test.orders.brand_name in ('Arambam - Start with Millet', 'Millet Express', 'Arambam - Start with Millet by UrbanPiper') AND (curefoods_test.orders.store_name ilike 'New Town%' or curefoods_test.orders.store_name ILIKE 'Dilsukh nagar%' or curefoods_test.orders.store_name ILIKE 'Hennur%' or curefoods_test.orders.store_name ILIKE 'Bhopal%' or curefoods_test.orders.store_name ILIKE 'Bawadiyan Kalan%' or curefoods_test.orders.store_name ILIKE 'Ujjain%' or curefoods_test.orders.store_name ILIKE 'Gandhipuram%' or curefoods_test.orders.store_name ILIKE 'Yelahanka%'))
+    AND lower(curefoods_test.orders.store_name) NOT ILIKE '%maninagar%' 
+    AND lower(curefoods_test.orders.store_name) NOT ILIKE '%msr%'
+    AND lower(curefoods_test.orders.store_name) NOT ILIKE '%KENGERI%'
+    AND lower(curefoods_test.orders.store_name) NOT ILIKE '%UJJAIN%'
+    --AND store_name <> 'MAA KK Santhome POS'
+ORDER BY 
+    orderdate DESC
